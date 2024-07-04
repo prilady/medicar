@@ -30,12 +30,12 @@
 // );
 
 $medicar-green-palette: (
- 50: #e8eaf6,
- 100: #c5cae9,
+ 50: #FFFFFF,
+ 100: #A8A8A8,
  200: #9fa8da,
  300: #7986cb,
  400: #49B4BB,
- 500: #49B4BB,
+ 500: #D9F1F3,
  600: #49B4BB,
  700: #49B4BB,
  800: #49B4BB,
@@ -46,7 +46,7 @@ $medicar-green-palette: (
    200: rgba(black, 0.87),
    300: white,
    400: #49B4BB,
-   500: #49B4BB,
+   500: #D9F1F3,
    600: #49B4BB,
    700: #49B4BB,
    800: #49B4BB,
@@ -55,7 +55,7 @@ $medicar-green-palette: (
 );
 
 $medicar-primary: mat.define-palette($medicar-green-palette, 400);
-$medicar-accent: mat.define-palette($medicar-green-palette, 400, 100, 400);
+$medicar-accent: mat.define-palette($medicar-green-palette, 400, 100, 500);
 
 // The warn palette is optional (defaults to red).
 $medicar-warn: mat.define-palette(mat.$red-palette);
