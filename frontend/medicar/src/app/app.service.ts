@@ -6,12 +6,20 @@ import axios from 'axios';
 })
 export class AppService {
 
-  constructor() { }
+  constructor() {
+    axios.defaults.baseURL = 'http://localhost:3000/';
+    axios.defaults.headers.post['Content-Type'] = 'application/json';
+   }
+
   getRandomToken(username: string, password: string) {
     return axios.post('users/login', {
       "username": username,
       "password": password
     });
+  }
+
+  leaveToken() {
+    axios.defaults.headers.common['Authorization'] = "";
   }
 }
 

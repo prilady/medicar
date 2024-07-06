@@ -1,0 +1,21 @@
+<div fxLayout="column" fxLayoutAlign="space-evenly center" class="main"> 
+    <img src="../assets/logo.png" />
+  <div class="example-button-row">
+    <button mat-button disabled>Lucas Freitas</button>
+    <a mat-button href="/login" target="_blank" (click)="logout()">Desconectar</a>
+  </div>
+
+    <mat-card appearance="outlined">
+        <mat-card-header>
+          <div fxLayout="row" fxLayoutAlign="space-between center" > 
+            <mat-card-title>Consulta Clínica</mat-card-title> 
+                <button mat-fab extended>
+                  <mat-icon>add</mat-icon>
+                  Cadastrar consulta
+                </button>               
+          </div>
+          </mat-card-header>
+        <mat-card-content></mat-card-content>
+      </mat-card>
+      
+</div>
