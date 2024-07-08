@@ -10,6 +10,7 @@ import { Router, RouterOutlet } from '@angular/router';
 import axios from 'axios';
 import { AppService } from '../../app.service';
 import { CommonModule } from '@angular/common';
+import { Token } from '../../globals/globals';
 
 @Component({
   selector: 'app-login',
@@ -24,14 +25,13 @@ import { CommonModule } from '@angular/common';
 })
 export class LoginComponent {
 
-  token: string = "";
+  token: Token = new Token();
 
   constructor(private appService: AppService, private router: Router, private ngZone: NgZone) {}
 
   title = 'Login';
 
   login: FormGroup = new FormGroup({
-    // email: new FormControl('', [Validators.email, Validators.required]),
     email: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required, Validators.min(9)])
   });
@@ -42,8 +42,8 @@ export class LoginComponent {
   getToken() {
     this.appService.getRandomToken(this.emailInput?.value, this.passwordInput?.value)
       .then(response => {
-        this.token = response.data.token;
-        axios.defaults.headers.common['Authorization'] = this.token;
+        this.token.str = response.data.token;
+        axios.defaults.headers.common['Authorization'] = 'Token ' + this.token.str;
         this.ngZone.run(() => {
           this.router.navigateByUrl('')
         });
@@ -54,7 +54,6 @@ export class LoginComponent {
   }
 
   signin() {
-    //Implementar depois TODO Priscila
     this.ngZone.run(() => {
       this.router.navigateByUrl('/signin')
     });

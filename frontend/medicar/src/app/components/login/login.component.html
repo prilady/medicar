@@ -1,6 +1,6 @@
-<div fxLayout="column" fxLayoutAlign="center center" class="row-height"> 
-    <img src="../assets/logo.png" />
-    <form [formGroup]="login" fxLayout="column" id="formLogin">
+<div fxLayout="column" fxLayoutAlign="center center" class="row-height">
+  <img src="../assets/logo.png" />
+  <form [formGroup]="login" fxLayout="column" id="formLogin">
     <mat-form-field appearance="outline">
       <mat-label>Email ou Login</mat-label>
       <input matInput formControlName="email" required>
@@ -13,9 +13,10 @@
       <!-- <mat-hint *ngIf="!(passwordInput?.value != '')">Digite sua senha</mat-hint> -->
     </mat-form-field>
     <mat-checkbox>Lembrar minha senha</mat-checkbox>
-    <div fxLayout="row" >
-    <button mat-stroked-button (click)="signin()">Criar Conta</button> <button (click)="getToken()" mat-stroked-button>Acessar</button>
-  </div>
+    <div fxLayout="row">
+      <button mat-stroked-button (click)="signin()">Criar Conta</button> <button (click)="getToken()"
+        mat-stroked-button>Acessar</button>
+    </div>
   </form>
-  </div>
-  <router-outlet />
+</div>
+<router-outlet />

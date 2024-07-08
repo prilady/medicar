@@ -1,21 +1,85 @@
-<div fxLayout="column" fxLayoutAlign="space-evenly center" class="main"> 
-    <img src="../assets/logo.png" />
+<div fxLayout="column" fxLayoutAlign="space-evenly center" class="main">
+  <img src="../assets/logo.png" />
   <div class="example-button-row">
-    <button mat-button disabled>Lucas Freitas</button>
+    <button mat-button disabled>Priscila Rocha</button>
     <a mat-button href="/login" target="_blank" (click)="logout()">Desconectar</a>
   </div>
 
-    <mat-card appearance="outlined">
-        <mat-card-header>
-          <div fxLayout="row" fxLayoutAlign="space-between center" > 
-            <mat-card-title>Consulta Clínica</mat-card-title> 
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <mat-card-header>
+        <div fxLayout="column" fxLayoutAlign="space-between center">
+          <mat-card-title>Consulta Clínica</mat-card-title>
+          <button mat-fab extended>
+            <mat-icon>add</mat-icon>
+            Cadastrar consulta
+          </button>
+          <div fxLayout="row">
+            <!-- <mat-list *ngFor="let item of schedule">
+              <span matListItemTitle>ESPECIALIDADE</span>
+              <mat-list-item>{{item.medico.especialidade.nome}}</mat-list-item>
+              <span matListItemTitle>PROFISSIONAL</span>
+              <mat-list-item>{{item.medico.nome}}</mat-list-item>
+              <span matListItemTitle>DATA</span>
+              <mat-list-item>{{item.dia}}</mat-list-item>
+              <span matListItemTitle>HORA</span>
+              <mat-list-item>{{item.hora}}</mat-list-item>
+              <mat-list-item>
                 <button mat-fab extended>
-                  <mat-icon>add</mat-icon>
-                  Cadastrar consulta
-                </button>               
+                  <mat-icon>clear</mat-icon>
+                  Desmarcar
+                </button>
+              </mat-list-item>          
+            </mat-list> -->
+
+            <table mat-table [dataSource]="schedule">
+
+              <ng-container matColumnDef="especialidade">
+                <th mat-header-cell *matHeaderCellDef> ESPECIALIDADE </th>
+                <td mat-cell *matCellDef="let element"> {{element.especialidade}} </td>
+              </ng-container>
+            
+              <!-- Name Column -->
+              <ng-container matColumnDef="profissional">
+                <th mat-header-cell *matHeaderCellDef> PROFISSIONAL </th>
+                <td mat-cell *matCellDef="let element"> {{element.profissional}} </td>
+              </ng-container>
+            
+              <!-- Weight Column -->
+              <ng-container matColumnDef="data">
+                <th mat-header-cell *matHeaderCellDef> DATA </th>
+                <td mat-cell *matCellDef="let element"> {{element.data}} </td>
+              </ng-container>
+            
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="hora">
+                <th mat-header-cell *matHeaderCellDef> HORA </th>
+                <td mat-cell *matCellDef="let element"> {{element.hora}} </td>
+              </ng-container>
+            
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+              <!-- <thead>
+                  <tr>
+                      <th>ESPECIALIDADE</th>
+                      <th>PROFISSIONAL</th>
+                      <th>DATA</th>
+                      <th>HORA</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let item of schedule">
+                      <td>{{item.medico.especialidade.nome}}</td>
+                      <td>{{item.medico.nome}}</td>
+                      <td>{{item.dia}}</td>
+                      <td>{{item.hora}}</td>
+                  </tr>
+              </tbody> -->
+          </table>
           </div>
-          </mat-card-header>
-        <mat-card-content></mat-card-content>
-      </mat-card>
-      
+        </div>
+      </mat-card-header>
+    </mat-card-content>
+  </mat-card>
 </div>

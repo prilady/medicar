@@ -21,5 +21,5 @@ export class AppService {
   leaveToken() {
     axios.defaults.headers.common['Authorization'] = "";
   }
+  
 }
-
