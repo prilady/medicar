@@ -19,6 +19,8 @@ export class AppService {
   }
 
   leaveToken() {
+    localStorage.removeItem('access_token');
+    localStorage.clear();
     axios.defaults.headers.common['Authorization'] = "";
   }
   

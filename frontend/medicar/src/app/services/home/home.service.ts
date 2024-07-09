@@ -9,6 +9,7 @@ export class HomeService {
   constructor() { }
 
   getSchedules() {
+    axios.defaults.headers.common['Authorization'] = localStorage.getItem('access_token');
     return axios.get('/consultas/');
   }
 }

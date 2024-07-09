@@ -6,8 +6,8 @@ import { AppService } from '../../app.service';
 import { HomeService } from '../../services/home/home.service';
 import { MatListModule } from '@angular/material/list';
 import { CommonModule } from '@angular/common';
-import { Schedule } from '../../globals/globals';
 import { MatTableModule } from '@angular/material/table';
+import { Schedule } from '../../models/schedule.model';
 
 export interface PeriodicElement {
   name: string;
@@ -49,18 +49,14 @@ export class HomeComponent {
 
   displayedColumns: string[] = ['especialidade', 'profissional', 'data', 'hora'];
 
-  schedulesList() {
-    this.homeService.getSchedules().then(response => {
+  ngOnChanges() {
+     this.homeService.getSchedules().then(response => {
       console.log(response);
-      this.schedule = response.data;
+     this.schedule = response.data;
     })
     .catch(error => {
       console.log(error);
     });
-  }
-
-  ngOnInit() {
-    this.schedulesList();
   }
 
   ngOnDestroy() {

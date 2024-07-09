@@ -10,7 +10,7 @@ import { Router, RouterOutlet } from '@angular/router';
 import axios from 'axios';
 import { AppService } from '../../app.service';
 import { CommonModule } from '@angular/common';
-import { Token } from '../../globals/globals';
+import { Token } from '../../models/globals.model';
 
 @Component({
   selector: 'app-login',
@@ -42,8 +42,9 @@ export class LoginComponent {
   getToken() {
     this.appService.getRandomToken(this.emailInput?.value, this.passwordInput?.value)
       .then(response => {
-        this.token.str = response.data.token;
-        axios.defaults.headers.common['Authorization'] = 'Token ' + this.token.str;
+        this.token.str = 'Token ' + response.data.token;
+        localStorage.setItem('access_token', this.token.str);
+        axios.defaults.headers.common['Authorization'] = localStorage.getItem('access_token');
         this.ngZone.run(() => {
           this.router.navigateByUrl('')
         });
